@@ -5,7 +5,7 @@
   "author": "kamataryo <6292312+kamataryo@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npx webpack --mode production"
+    "build": "npx webpack --mode production && cp dist docs"
   },
   "dependencies": {
     "@geolonia/normalize-japanese-addresses": "^2.7.3",
