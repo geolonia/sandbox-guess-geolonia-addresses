@@ -28,7 +28,7 @@ form.addEventListener('submit', async (e) => {
       if(towns.length > 0) {
         for (const town of towns) {
           const li = document.createElement('li')
-          li.textContent = `${town.town} (スコア: ${town.score})`
+          li.innerHTML = `${normalized.pref}${normalized.city}<strong>${town.town}</strong> <small>スコア: ${town.score}<small>`
           list.append(li)
         }
       } else {
