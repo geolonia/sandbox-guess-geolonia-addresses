@@ -1,6 +1,7 @@
 const Normalize = require('@geolonia/normalize-japanese-addresses')
 const { distance } = require('fastest-levenshtein')
 
+const result = document.getElementById('result')
 const form = document.getElementById('form')
 const list = document.getElementById('list')
 
@@ -9,10 +10,10 @@ form.addEventListener('submit', async (e) => {
   const inputText = e.currentTarget['input'].value
     if (!inputText) return
     const normalized = await Normalize.normalize(inputText)
+    result.innerHTML = '# 正規化結果<br />' + JSON.stringify(normalized)
+    list.innerHTML = ''
+
     if(normalized.level >= 2) {
-
-      list.innerHTML = ''
-
       const town = normalized.town + normalized.addr
       const townsResp = await fetch(`https://geolonia.github.io/japanese-addresses/api/ja/${normalized.pref}/${normalized.city}.json`)
       const towns = (await townsResp.json()).map(x => {
